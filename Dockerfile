@@ -22,10 +22,11 @@ ENV AWS_ACCESS_KEY_ID="<b2 app key id>"
 ENV AWS_SECRET_ACCESS_KEY="<b2 app key>"
 ENV S3_ENDPOINT="<s3 endpoint>"
 ENV REPO_URL="<repo url>"
+ENV GIT_BRANCH="main"
 ENV S3_BUCKET_NAME="<bucket_name>"
 ENV PAGE_NAME="<page name>"
 
-ENTRYPOINT git clone --recurse-submodules -j8 ${REPO_URL} $PAGE_NAME; \
+ENTRYPOINT git clone --recurse-submodules -j8 --branch ${GIT_BRANCH} ${REPO_URL} $PAGE_NAME; \
     cd $PAGE_NAME;  \
     hugo;           \
     aws s3 cp public/ s3://${S3_BUCKET_NAME}/$PAGE_NAME --recursive --endpoint-url $S3_ENDPOINT
