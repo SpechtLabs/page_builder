@@ -41,4 +41,4 @@ ENV PAGE_NAME="<page name>"
 
 #COPY build-hugo.sh /home/builder/build-hugo.sh
 
-ENTRYPOINT /home/builder/build-hugo.sh
+ENTRYPOINT chmod +x /home/builder/build-hugo.sh && /home/builder/build-hugo.sh
