@@ -39,7 +39,6 @@ ENV GIT_BRANCH="main"
 ENV S3_BUCKET_NAME="<bucket_name>"
 ENV PAGE_NAME="<page name>"
 
-ENTRYPOINT git clone --recurse-submodules -j8 --branch ${GIT_BRANCH} ${REPO_URL} $PAGE_NAME; \
-    cd $PAGE_NAME;  \
-    hugo;           \
-    aws s3 cp public/ s3://${S3_BUCKET_NAME}/$PAGE_NAME --recursive --endpoint-url $S3_ENDPOINT --cli-connect-timeout 6000
+#COPY build-hugo.sh /home/builder/build-hugo.sh
+
+ENTRYPOINT bash /home/builder/build-hugo.sh
