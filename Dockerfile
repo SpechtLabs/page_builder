@@ -1,4 +1,4 @@
-FROM ubuntu:plucky-20250402
+FROM ubuntu:plucky-20250415
 
 ARG HUGO_VERSION="0.145.0"
 ARG NODE_MAJOR=20
